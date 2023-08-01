@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A3C083D2A78DD8F00E64B14 /* PiggyWingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C083C2A78DD8F00E64B14 /* PiggyWingsApp.swift */; };
-		0A3C083F2A78DD8F00E64B14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C083E2A78DD8F00E64B14 /* ContentView.swift */; };
+		0A3C083F2A78DD8F00E64B14 /* Historial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C083E2A78DD8F00E64B14 /* Historial.swift */; };
 		0A3C08412A78DD9100E64B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A3C08402A78DD9100E64B14 /* Assets.xcassets */; };
 		0A3C08442A78DD9100E64B14 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A3C08432A78DD9100E64B14 /* Preview Assets.xcassets */; };
 		0A3C08462A78DD9100E64B14 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08452A78DD9100E64B14 /* Persistence.swift */; };
@@ -16,6 +16,11 @@
 		0A3C08532A78DD9100E64B14 /* PiggyWingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08522A78DD9100E64B14 /* PiggyWingsTests.swift */; };
 		0A3C085D2A78DD9100E64B14 /* PiggyWingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C085C2A78DD9100E64B14 /* PiggyWingsUITests.swift */; };
 		0A3C085F2A78DD9100E64B14 /* PiggyWingsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C085E2A78DD9100E64B14 /* PiggyWingsUITestsLaunchTests.swift */; };
+		0A3C086D2A78E0E000E64B14 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C086C2A78E0E000E64B14 /* CustomTabBar.swift */; };
+		0A3C086F2A78E13900E64B14 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C086E2A78E13900E64B14 /* RootView.swift */; };
+		0A3C08732A78E2B500E64B14 /* Resumen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08722A78E2B500E64B14 /* Resumen.swift */; };
+		0A3C08752A78E2D200E64B14 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08742A78E2D200E64B14 /* TabBarButton.swift */; };
+		0A3C08772A78E37D00E64B14 /* NuevaTransaccionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08762A78E37D00E64B14 /* NuevaTransaccionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +43,7 @@
 /* Begin PBXFileReference section */
 		0A3C08392A78DD8F00E64B14 /* PiggyWings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiggyWings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A3C083C2A78DD8F00E64B14 /* PiggyWingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiggyWingsApp.swift; sourceTree = "<group>"; };
-		0A3C083E2A78DD8F00E64B14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0A3C083E2A78DD8F00E64B14 /* Historial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historial.swift; sourceTree = "<group>"; };
 		0A3C08402A78DD9100E64B14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A3C08432A78DD9100E64B14 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A3C08452A78DD9100E64B14 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -48,6 +53,11 @@
 		0A3C08582A78DD9100E64B14 /* PiggyWingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiggyWingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A3C085C2A78DD9100E64B14 /* PiggyWingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiggyWingsUITests.swift; sourceTree = "<group>"; };
 		0A3C085E2A78DD9100E64B14 /* PiggyWingsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiggyWingsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0A3C086C2A78E0E000E64B14 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		0A3C086E2A78E13900E64B14 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		0A3C08722A78E2B500E64B14 /* Resumen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resumen.swift; sourceTree = "<group>"; };
+		0A3C08742A78E2D200E64B14 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		0A3C08762A78E37D00E64B14 /* NuevaTransaccionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevaTransaccionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +108,9 @@
 		0A3C083B2A78DD8F00E64B14 /* PiggyWings */ = {
 			isa = PBXGroup;
 			children = (
+				0A3C086E2A78E13900E64B14 /* RootView.swift */,
+				0A3C08702A78E13E00E64B14 /* Views */,
 				0A3C083C2A78DD8F00E64B14 /* PiggyWingsApp.swift */,
-				0A3C083E2A78DD8F00E64B14 /* ContentView.swift */,
 				0A3C08402A78DD9100E64B14 /* Assets.xcassets */,
 				0A3C08452A78DD9100E64B14 /* Persistence.swift */,
 				0A3C08472A78DD9100E64B14 /* PiggyWings.xcdatamodeld */,
@@ -131,6 +142,34 @@
 				0A3C085E2A78DD9100E64B14 /* PiggyWingsUITestsLaunchTests.swift */,
 			);
 			path = PiggyWingsUITests;
+			sourceTree = "<group>";
+		};
+		0A3C086B2A78E0BE00E64B14 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0A3C086C2A78E0E000E64B14 /* CustomTabBar.swift */,
+				0A3C08742A78E2D200E64B14 /* TabBarButton.swift */,
+			);
+			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
+		0A3C08702A78E13E00E64B14 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0A3C08712A78E24500E64B14 /* ButtonViews */,
+				0A3C086B2A78E0BE00E64B14 /* CustomTabBar */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0A3C08712A78E24500E64B14 /* ButtonViews */ = {
+			isa = PBXGroup;
+			children = (
+				0A3C083E2A78DD8F00E64B14 /* Historial.swift */,
+				0A3C08722A78E2B500E64B14 /* Resumen.swift */,
+				0A3C08762A78E37D00E64B14 /* NuevaTransaccionView.swift */,
+			);
+			path = ButtonViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +303,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3C08462A78DD9100E64B14 /* Persistence.swift in Sources */,
-				0A3C083F2A78DD8F00E64B14 /* ContentView.swift in Sources */,
+				0A3C086D2A78E0E000E64B14 /* CustomTabBar.swift in Sources */,
+				0A3C086F2A78E13900E64B14 /* RootView.swift in Sources */,
+				0A3C083F2A78DD8F00E64B14 /* Historial.swift in Sources */,
 				0A3C083D2A78DD8F00E64B14 /* PiggyWingsApp.swift in Sources */,
+				0A3C08772A78E37D00E64B14 /* NuevaTransaccionView.swift in Sources */,
+				0A3C08752A78E2D200E64B14 /* TabBarButton.swift in Sources */,
 				0A3C08492A78DD9100E64B14 /* PiggyWings.xcdatamodeld in Sources */,
+				0A3C08732A78E2B500E64B14 /* Resumen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
