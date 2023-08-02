@@ -21,6 +21,7 @@
 		0A3C08732A78E2B500E64B14 /* Resumen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08722A78E2B500E64B14 /* Resumen.swift */; };
 		0A3C08752A78E2D200E64B14 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08742A78E2D200E64B14 /* TabBarButton.swift */; };
 		0A3C08772A78E37D00E64B14 /* NuevaTransaccionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08762A78E37D00E64B14 /* NuevaTransaccionView.swift */; };
+		0A3C08872A7AE1A400E64B14 /* NewTransaccion+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08852A7AE1A400E64B14 /* NewTransaccion+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		0A3C08722A78E2B500E64B14 /* Resumen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resumen.swift; sourceTree = "<group>"; };
 		0A3C08742A78E2D200E64B14 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		0A3C08762A78E37D00E64B14 /* NuevaTransaccionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevaTransaccionView.swift; sourceTree = "<group>"; };
+		0A3C08852A7AE1A400E64B14 /* NewTransaccion+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewTransaccion+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,12 +110,12 @@
 		0A3C083B2A78DD8F00E64B14 /* PiggyWings */ = {
 			isa = PBXGroup;
 			children = (
+				0A3C08802A7ADFD700E64B14 /* DB */,
 				0A3C086E2A78E13900E64B14 /* RootView.swift */,
 				0A3C08702A78E13E00E64B14 /* Views */,
 				0A3C083C2A78DD8F00E64B14 /* PiggyWingsApp.swift */,
 				0A3C08402A78DD9100E64B14 /* Assets.xcassets */,
 				0A3C08452A78DD9100E64B14 /* Persistence.swift */,
-				0A3C08472A78DD9100E64B14 /* PiggyWings.xcdatamodeld */,
 				0A3C08422A78DD9100E64B14 /* Preview Content */,
 			);
 			path = PiggyWings;
@@ -170,6 +172,15 @@
 				0A3C08762A78E37D00E64B14 /* NuevaTransaccionView.swift */,
 			);
 			path = ButtonViews;
+			sourceTree = "<group>";
+		};
+		0A3C08802A7ADFD700E64B14 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				0A3C08852A7AE1A400E64B14 /* NewTransaccion+CoreDataClass.swift */,
+				0A3C08472A78DD9100E64B14 /* PiggyWings.xcdatamodeld */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +317,7 @@
 				0A3C086D2A78E0E000E64B14 /* CustomTabBar.swift in Sources */,
 				0A3C086F2A78E13900E64B14 /* RootView.swift in Sources */,
 				0A3C083F2A78DD8F00E64B14 /* Historial.swift in Sources */,
+				0A3C08872A7AE1A400E64B14 /* NewTransaccion+CoreDataClass.swift in Sources */,
 				0A3C083D2A78DD8F00E64B14 /* PiggyWingsApp.swift in Sources */,
 				0A3C08772A78E37D00E64B14 /* NuevaTransaccionView.swift in Sources */,
 				0A3C08752A78E2D200E64B14 /* TabBarButton.swift in Sources */,

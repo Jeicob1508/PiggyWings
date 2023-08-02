@@ -9,9 +9,7 @@ import SwiftUI
 
 struct NuevaTransaccionView: View {
     
-    //@EnvironmentObject var dataController: DataController
-    @Environment(\.managedObjectContext) var moc
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) private var viewContext
     
     @EnvironmentObject var globalState: GlobalState
     @Binding var isShowingPopUp: Bool
@@ -30,6 +28,41 @@ struct NuevaTransaccionView: View {
     
     //Cerrar el popup --> Agregar en el boton
     //presentationMode.wrappedValue.dismiss()
+    
+    private func addItem() {
+        withAnimation {
+            // Generar un UUID para el atributo "id"
+            //let newItem = Item(context: viewContext)
+            let newTransaccion = NewTransaccion(context: viewContext)
+            newTransaccion.id = UUID()
+            
+            // Verificar que el atributo "id" tenga un valor no nulo antes de guardar
+            guard let transaccionID = newTransaccion.id else {
+                print("Error: El atributo 'id' no ha sido configurado correctamente.")
+                return
+            }
+            
+            newTransaccion.fecha = Date()
+            newTransaccion.monto = Double(txtMonto) ?? 0.0
+            newTransaccion.comentario = txtComnt
+
+            do {
+                // Imprimir información sobre la entidad antes de guardarla
+                print("NewTransaccion antes de guardar:")
+                print("ID: \(transaccionID)")
+                print("Fecha: \(newTransaccion.fecha ?? Date())")
+                print("Monto: \(newTransaccion.monto)")
+                print("Comentario: \(newTransaccion.comentario ?? "")")
+                
+                try viewContext.save()
+            } catch {
+                // Manejar el error e imprimir detalles
+                let nsError = error as NSError
+                print("Error al guardar la transacción: \(nsError), \(nsError.userInfo)")
+                // También puedes mostrar una alerta o realizar otras acciones en caso de error
+            }
+        }
+    }
     
     var body: some View {
         
@@ -124,7 +157,7 @@ struct NuevaTransaccionView: View {
                     print("El monto es: \(monto), el comentario es: \(comentario), el tipo es \(tipo)")
                     
                     //DataController().agregar(comentario: comentario,monto: monto,tipo:tipo,context: moc)
-                    dismiss()
+                    addItem()
                     
                     txtMonto = ""
                     txtComnt = ""
@@ -147,6 +180,9 @@ struct NuevaTransaccionView: View {
 
 }
 
+
+
+
 struct NuevaTransaccionView_Previews: PreviewProvider {
     
     @State static var isShowingPopUp = false
@@ -157,7 +193,6 @@ struct NuevaTransaccionView_Previews: PreviewProvider {
             .environmentObject(globalState)
     }
 }
-
 
 /*
 
