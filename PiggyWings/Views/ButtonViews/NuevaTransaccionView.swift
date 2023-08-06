@@ -28,42 +28,26 @@ struct NuevaTransaccionView: View {
     
     //Cerrar el popup --> Agregar en el boton
     //presentationMode.wrappedValue.dismiss()
-    /*
-    private func addItem() {
-        withAnimation {
-            // Generar un UUID para el atributo "id"
-            //let newItem = Item(context: viewContext)
-            let newTransaccion = NewTransaccion(context: moc)
-            newTransaccion.id = UUID()
-            
-            // Verificar que el atributo "id" tenga un valor no nulo antes de guardar
-            guard let transaccionID = newTransaccion.id else {
-                print("Error: El atributo 'id' no ha sido configurado correctamente.")
-                return
-            }
-            
-            newTransaccion.fecha = Date()
-            newTransaccion.monto = Double(txtMonto) ?? 0.0
-            newTransaccion.comentario = txtComnt
 
-            do {
-                // Imprimir información sobre la entidad antes de guardarla
-                print("NewTransaccion antes de guardar:")
-                print("ID: \(transaccionID)")
-                print("Fecha: \(newTransaccion.fecha ?? Date())")
-                print("Monto: \(newTransaccion.monto)")
-                print("Comentario: \(newTransaccion.comentario ?? "")")
-                
-                try moc.save()
-            } catch {
-                // Manejar el error e imprimir detalles
-                let nsError = error as NSError
-                print("Error al guardar la transacción: \(nsError), \(nsError.userInfo)")
-                // También puedes mostrar una alerta o realizar otras acciones en caso de error
-            }
+    private func agregarTransaccion() {
+        
+        let agregar = NewTransaccion(context: self.moc)
+        
+        agregar.id = UUID()
+        agregar.fecha = Date()
+        agregar.monto = self.monto
+        agregar.comentario = self.comentario
+        do {
+            try moc.save()
+        } catch {
+            // Manejar el error e imprimir detalles
+            let nsError = error as NSError
+            print("Error al guardar la transacción: \(nsError), \(nsError.userInfo)")
+            // También puedes mostrar una alerta o realizar otras acciones en caso de error
         }
+        
     }
-    */
+    
     var body: some View {
         
         VStack{
@@ -153,15 +137,9 @@ struct NuevaTransaccionView: View {
                     
                     comentario = txtComnt
                     tipo = toggleMonto
-                    
                     print("El monto es: \(monto), el comentario es: \(comentario), el tipo es \(tipo)")
                     
-                    let agregar = NewTransaccion(context: self.moc)
-                    
-                    agregar.id = UUID()
-                    agregar.fecha = Date()
-                    agregar.monto = self.monto
-                    agregar.comentario = self.comentario
+                    agregarTransaccion()
                     
                     //DataController().agregar(comentario: comentario,monto: monto,tipo:tipo,context: moc)
                     

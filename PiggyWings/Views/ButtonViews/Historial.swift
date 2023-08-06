@@ -31,7 +31,7 @@ struct HistorialView: View {
     
     var body: some View {
         VStack{
-            Text("Ventana del Resumen")
+            Text("Ventana del Historial")
             Spacer()
             List{
                 ForEach(newTransaccion, id: \.id) { newTransaccion in

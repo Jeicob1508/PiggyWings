@@ -8,40 +8,26 @@
 import SwiftUI
 
 struct ResumenView: View {
-    
     @EnvironmentObject var globalState: GlobalState
-    @Environment(\.managedObjectContext) private var moc
 
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \NewTransaccion.fecha, ascending: true),
-            NSSortDescriptor(keyPath: \NewTransaccion.monto, ascending: true),
-            NSSortDescriptor(keyPath: \NewTransaccion.comentario, ascending: true),],
-        animation: .default)
-    private var newTransaccion: FetchedResults<NewTransaccion>
-
-    static var fechaFormato = {
-        let formato = DateFormatter()
-        formato.dateStyle = .full
-        return formato
-    }()
-    
-    var fecha = Date()
-    
     var body: some View {
     
         VStack{
             Text("Ventana del Resumen")
             Spacer()
-            List{
-                ForEach(NewTransaccion, id: \.id) { newTransaccion in
-                    VStack(alignment: .leading){
-                        Text(String(format: "%.2f", newTransaccion.monto))
-                            .foregroundColor(.primary)
-                    }
-                }
-            }
+            Text("Actualmente tienes: \(String(format: "%.2f", globalState.money))")
+                .padding()
+                .font(Font.body)
             
+            Button{
+                globalState.money = 0
+            }label:{
+                Text("Limpiar")                        .foregroundColor(Color.white)
+                    .frame(width: 120, height: 45)
+                    .background(Rectangle()
+                        .foregroundColor(.black)
+                        .cornerRadius(10))
+            }
             Spacer()
         }
     }
