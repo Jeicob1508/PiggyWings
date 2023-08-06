@@ -17,15 +17,21 @@ struct HistorialView: View {
         sortDescriptors: [
             NSSortDescriptor(keyPath: \NewTransaccion.fecha, ascending: true),
             NSSortDescriptor(keyPath: \NewTransaccion.monto, ascending: true),
-            NSSortDescriptor(keyPath: \NewTransaccion.comentario, ascending: true),],
+            NSSortDescriptor(keyPath: \NewTransaccion.comentario, ascending: true),
+            NSSortDescriptor(keyPath: \NewTransaccion.tipo, ascending: true),],
         animation: .default)
     private var newTransaccion: FetchedResults<NewTransaccion>
     
     static var fechaFormato = {
         let formato = DateFormatter()
-        formato.dateStyle = .full
+        formato.dateStyle = .long
+        formato.timeStyle = .short
         return formato
     }()
+    
+    static var tipoFormato = {
+        
+    }
     
     var fecha = Date()
     
@@ -35,9 +41,25 @@ struct HistorialView: View {
             Spacer()
             List{
                 ForEach(newTransaccion, id: \.id) { newTransaccion in
-                    VStack(alignment: .leading){
-                        Text(String(format: "%.2f", newTransaccion.monto))
-                            .foregroundColor(.primary)
+                    HStack{
+                        VStack(alignment: .leading){
+                            HStack{
+                                Image(systemName: "dollarsign")
+                                    //.frame(maxWidth: 2)
+                                    //.frame(maxHeight: 2)
+                                Text(String(format: "%.2f", newTransaccion.monto))
+                                    .font(.headline.bold())
+                                    .foregroundColor(.primary)
+                            }
+                            Text("\(newTransaccion.fecha ?? self.fecha, formatter: Self.fechaFormato)")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                //.padding(.bottom, 0.2)
+                        }
+                        Spacer()
+                        Text("\(newTransaccion.tipo ? "Gasto" : "Ingreso")")
+                        Image(systemName: newTransaccion.tipo ? "minus.circle.fill" : "plus.circle.fill")
+                            .foregroundColor(newTransaccion.tipo ? .red : .green)
                     }
                 }
             }

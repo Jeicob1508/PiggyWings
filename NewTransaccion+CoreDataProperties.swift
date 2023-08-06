@@ -20,6 +20,7 @@ extension NewTransaccion {
     @NSManaged public var fecha: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var monto: Double
+    @NSManaged public var tipo: Bool
 
 }
 

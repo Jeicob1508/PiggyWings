@@ -8,5 +8,6 @@
         <attribute name="fecha" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="monto" attributeType="Double" minValueString="-1" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="tipo" optional="YES" attributeType="Boolean" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
 </model>

@@ -37,6 +37,7 @@ struct NuevaTransaccionView: View {
         agregar.fecha = Date()
         agregar.monto = self.monto
         agregar.comentario = self.comentario
+        agregar.tipo = self.tipo
         do {
             try moc.save()
         } catch {
@@ -134,14 +135,10 @@ struct NuevaTransaccionView: View {
                     }
                     
                     monto = Double(txtMonto) ?? 0.00
-                    
                     comentario = txtComnt
                     tipo = toggleMonto
-                    print("El monto es: \(monto), el comentario es: \(comentario), el tipo es \(tipo)")
                     
                     agregarTransaccion()
-                    
-                    //DataController().agregar(comentario: comentario,monto: monto,tipo:tipo,context: moc)
                     
                     txtMonto = ""
                     txtComnt = ""
