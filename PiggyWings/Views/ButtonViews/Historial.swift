@@ -9,80 +9,41 @@ import SwiftUI
 import CoreData
 
 struct HistorialView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
+    
+    @EnvironmentObject var globalState: GlobalState
+    @Environment(\.managedObjectContext) private var moc
+    
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \NewTransaccion.fecha, ascending: true),
+            NSSortDescriptor(keyPath: \NewTransaccion.monto, ascending: true),
+            NSSortDescriptor(keyPath: \NewTransaccion.comentario, ascending: true),],
         animation: .default)
-    private var items: FetchedResults<Item>
-
+    private var newTransaccion: FetchedResults<NewTransaccion>
+    
+    static var fechaFormato = {
+        let formato = DateFormatter()
+        formato.dateStyle = .full
+        return formato
+    }()
+    
+    var fecha = Date()
+    
     var body: some View {
         VStack{
-            NavigationView {
-                List {
-                    ForEach(items) { item in
-                        NavigationLink {
-                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                        } label: {
-                            Text(item.timestamp!, formatter: itemFormatter)
-                        }
-                    }
-                    .onDelete(perform: deleteItems)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                    }
-                    ToolbarItem {
-                        Button(action: addItem) {
-                            Label("Add Item", systemImage: "plus")
-                        }
+            Text("Ventana del Resumen")
+            Spacer()
+            List{
+                ForEach(newTransaccion, id: \.id) { newTransaccion in
+                    VStack(alignment: .leading){
+                        Text(String(format: "%.2f", newTransaccion.monto))
+                            .foregroundColor(.primary)
                     }
                 }
-            }
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                print("Error al guardar la transacción: \(nsError), \(nsError.userInfo)")
-                            
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
 struct Historial_Previews: PreviewProvider {
     static var previews: some View {
         HistorialView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)

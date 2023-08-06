@@ -34,6 +34,7 @@ struct RootView: View {
 }
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var moc
     @State var selectedTab: Tabs = .resumen
      
     var body: some View {
@@ -49,7 +50,7 @@ struct ContentView: View {
             
             Spacer()
             
-            CustomTabBar(selectedTab: $selectedTab)
+            CustomTabBar(selectedTab: $selectedTab).environment(\.managedObjectContext, self.moc)
         }
     }
 }

@@ -14,6 +14,7 @@ enum Tabs: Int{
 
 struct CustomTabBar: View {
     
+    @Environment(\.managedObjectContext) private var moc
     @EnvironmentObject var globalState: GlobalState
     @Binding var selectedTab: Tabs
     @State private var isShowingPopUp = false
@@ -84,7 +85,7 @@ struct CustomTabBar: View {
                 }
                 .sheet(isPresented: $isShowingPopUp, content:{
                     NuevaTransaccionView(isShowingPopUp: $isShowingPopUp)
-                        .environmentObject(globalState)
+                        .environment(\.managedObjectContext, self.moc)
                 })
                 
                 Spacer()

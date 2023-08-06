@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NuevaTransaccionView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var moc
     
     @EnvironmentObject var globalState: GlobalState
     @Binding var isShowingPopUp: Bool
@@ -28,12 +28,12 @@ struct NuevaTransaccionView: View {
     
     //Cerrar el popup --> Agregar en el boton
     //presentationMode.wrappedValue.dismiss()
-    
+    /*
     private func addItem() {
         withAnimation {
             // Generar un UUID para el atributo "id"
             //let newItem = Item(context: viewContext)
-            let newTransaccion = NewTransaccion(context: viewContext)
+            let newTransaccion = NewTransaccion(context: moc)
             newTransaccion.id = UUID()
             
             // Verificar que el atributo "id" tenga un valor no nulo antes de guardar
@@ -54,7 +54,7 @@ struct NuevaTransaccionView: View {
                 print("Monto: \(newTransaccion.monto)")
                 print("Comentario: \(newTransaccion.comentario ?? "")")
                 
-                try viewContext.save()
+                try moc.save()
             } catch {
                 // Manejar el error e imprimir detalles
                 let nsError = error as NSError
@@ -63,7 +63,7 @@ struct NuevaTransaccionView: View {
             }
         }
     }
-    
+    */
     var body: some View {
         
         VStack{
@@ -156,8 +156,14 @@ struct NuevaTransaccionView: View {
                     
                     print("El monto es: \(monto), el comentario es: \(comentario), el tipo es \(tipo)")
                     
+                    let agregar = NewTransaccion(context: self.moc)
+                    
+                    agregar.id = UUID()
+                    agregar.fecha = Date()
+                    agregar.monto = self.monto
+                    agregar.comentario = self.comentario
+                    
                     //DataController().agregar(comentario: comentario,monto: monto,tipo:tipo,context: moc)
-                    addItem()
                     
                     txtMonto = ""
                     txtComnt = ""
