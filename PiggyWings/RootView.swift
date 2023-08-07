@@ -57,10 +57,12 @@ struct ContentView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 
                 Spacer()
-                CustomTabBar(selectedTab: $selectedTab).environment(\.managedObjectContext, self.moc)
+                CustomTabBar(selectedTab: $selectedTab)
+                    .environment(\.managedObjectContext, self.moc)
             }
             if globalState.config{
                 Configuracion()
+                    .environment(\.managedObjectContext, self.moc)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.white)
                     .transition(AnyTransition.move(edge: .trailing).combined(with: .opacity))
