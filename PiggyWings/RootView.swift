@@ -16,9 +16,15 @@ class GlobalState: ObservableObject {
             UserDefaults.standard.set(money, forKey: "MoneyKey")
         }
     }
+    @Published var config:Bool {
+        didSet {
+            UserDefaults.standard.set(config, forKey: "MostrarConfig")
+        }
+    }
     
     init() {
         self.money = Double(UserDefaults.standard.double(forKey: "MoneyKey"))
+        self.config = Bool(UserDefaults.standard.bool(forKey: "MostrarConfig"))
     }
     
 }
@@ -34,23 +40,32 @@ struct RootView: View {
 }
 
 struct ContentView: View {
+    @EnvironmentObject var globalState: GlobalState
     @Environment(\.managedObjectContext) private var moc
     @State var selectedTab: Tabs = .resumen
-     
+    
     var body: some View {
-        VStack {
-            TabView(selection: $selectedTab) {
-                ResumenView()
-                    .tag(Tabs.resumen)
+        ZStack{
+            VStack {
+                TabView(selection: $selectedTab) {
+                    ResumenView()
+                        .tag(Tabs.resumen)
+                    
+                    HistorialView()
+                        .tag(Tabs.historial)
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 
-                HistorialView()
-                    .tag(Tabs.historial)
+                Spacer()
+                CustomTabBar(selectedTab: $selectedTab).environment(\.managedObjectContext, self.moc)
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            
-            Spacer()
-            
-            CustomTabBar(selectedTab: $selectedTab).environment(\.managedObjectContext, self.moc)
+            if globalState.config{
+                Configuracion()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.white)
+                    .transition(AnyTransition.move(edge: .trailing).combined(with: .opacity))
+                    .zIndex(1)
+            }
         }
     }
 }

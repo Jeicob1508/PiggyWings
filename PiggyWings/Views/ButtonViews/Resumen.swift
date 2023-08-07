@@ -16,7 +16,6 @@ struct TransicionDerecha: ViewModifier {
 
 struct ResumenView: View {
     @EnvironmentObject var globalState: GlobalState
-    @State private var mostrar: Bool = false
     
     var body: some View {
         ZStack{
@@ -28,7 +27,7 @@ struct ResumenView: View {
                     Spacer()
                     Button(action: {
                         withAnimation {
-                            mostrar.toggle()
+                            globalState.config.toggle()
                         }
                     }) {
                         Image(systemName: "gear") // Use the system symbol for gear/tuerca
@@ -48,13 +47,6 @@ struct ResumenView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity) // Expand the VStack to fill available space
             .background(Color.white)
             .edgesIgnoringSafeArea(.all)
-            if mostrar {
-                Configuracion(mostrarConfiguracion: $mostrar)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.white)
-                    .transition(AnyTransition.move(edge: .trailing).combined(with: .opacity))
-                    .zIndex(1)
-            }
         }
     }
 }

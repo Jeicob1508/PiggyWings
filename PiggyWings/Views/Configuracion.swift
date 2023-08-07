@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Configuracion: View {
-    @Binding var mostrarConfiguracion: Bool // Binding to control the visibility
+    @EnvironmentObject var globalState: GlobalState
     
     var body: some View {
         VStack {
@@ -16,13 +16,13 @@ struct Configuracion: View {
             HStack{
                 Button(action: {
                     withAnimation {
-                        mostrarConfiguracion.toggle() // Toggle the binding to close the view
+                        globalState.config.toggle()
                     }
                 }) {
-                    Image(systemName: "chevron.backward") // Use the system symbol for "X"
+                    Image(systemName: "chevron.backward")
                         .font(.system(size: 30))
                         .padding()
-                        .foregroundColor(.red) // Example text color
+                        .foregroundColor(.red)
                 }
                 
                 Spacer()
@@ -36,7 +36,7 @@ struct Configuracion: View {
 
 struct Configuracion_Previews: PreviewProvider {
     static var previews: some View {
-        Configuracion(mostrarConfiguracion: .constant(false))
+        Configuracion()
             .transition(AnyTransition.move(edge: .trailing).combined(with: .opacity))
     }
 }
