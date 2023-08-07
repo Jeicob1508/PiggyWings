@@ -7,43 +7,54 @@
 
 import SwiftUI
 
+struct TransicionDerecha: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .transition(.move(edge: .trailing))
+    }
+}
+
 struct ResumenView: View {
     @EnvironmentObject var globalState: GlobalState
-    @Environment(\.managedObjectContext) private var moc
     @State private var mostrar: Bool = false
-
-    var body: some View {
     
-        VStack{
-            Text("Ventana del Resumen")
-            HStack{
-                Button(action:{
-                    self.mostrar.toggle()
-                }){
-                    Image(systemName: "gearshape.fill")
+    var body: some View {
+        ZStack{
+            Color.white // Background color
+            VStack {
+                Text("Ventana del Resumen")
+                
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            mostrar.toggle()
+                        }
+                    }) {
+                        Image(systemName: "gear") // Use the system symbol for gear/tuerca
+                            .font(.system(size: 30))
+                            .padding()
+                            .foregroundColor(.blue) // Example text color
+                    }
                 }
-                .font(.system(size: 30))
-                .padding()
-                .sheet(isPresented: self.$mostrar, content: {
-                    Configuracion().environment(\.managedObjectContext, self.moc)
-                })
+                Spacer()
+                
+                Text("Actualmente tienes: \(String(format: "%.2f", globalState.money))")
+                    .padding()
+                    .font(.body)
+                
                 Spacer()
             }
-            Spacer()
-            Text("Actualmente tienes: \(String(format: "%.2f", globalState.money))")
-                .padding()
-                .font(Font.body)
-            
-            Button{
-                globalState.money = 0
-            }label:{
-                Text("Limpiar")                        .foregroundColor(Color.white)
-                    .frame(width: 120, height: 45)
-                    .background(Rectangle()
-                        .foregroundColor(.black)
-                        .cornerRadius(10))
+            .frame(maxWidth: .infinity, maxHeight: .infinity) // Expand the VStack to fill available space
+            .background(Color.white)
+            .edgesIgnoringSafeArea(.all)
+            if mostrar {
+                Configuracion(mostrarConfiguracion: $mostrar)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.white)
+                    .transition(AnyTransition.move(edge: .trailing).combined(with: .opacity))
+                    .zIndex(1)
             }
-            Spacer()
         }
     }
 }
