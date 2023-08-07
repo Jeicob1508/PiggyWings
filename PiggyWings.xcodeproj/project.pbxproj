@@ -23,6 +23,7 @@
 		0A3C08772A78E37D00E64B14 /* NuevaTransaccionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C08762A78E37D00E64B14 /* NuevaTransaccionView.swift */; };
 		0AA649462A80585700557E11 /* NewTransaccion+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA649442A80585700557E11 /* NewTransaccion+CoreDataClass.swift */; };
 		0AA649472A80585700557E11 /* NewTransaccion+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA649452A80585700557E11 /* NewTransaccion+CoreDataProperties.swift */; };
+		0AA649492A80722600557E11 /* Configuracion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA649482A80722600557E11 /* Configuracion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		0A3C08762A78E37D00E64B14 /* NuevaTransaccionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevaTransaccionView.swift; sourceTree = "<group>"; };
 		0AA649442A80585700557E11 /* NewTransaccion+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewTransaccion+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		0AA649452A80585700557E11 /* NewTransaccion+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewTransaccion+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		0AA649482A80722600557E11 /* Configuracion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuracion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			children = (
 				0A3C08712A78E24500E64B14 /* ButtonViews */,
 				0A3C086B2A78E0BE00E64B14 /* CustomTabBar */,
+				0AA649482A80722600557E11 /* Configuracion.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3C08462A78DD9100E64B14 /* Persistence.swift in Sources */,
+				0AA649492A80722600557E11 /* Configuracion.swift in Sources */,
 				0AA649472A80585700557E11 /* NewTransaccion+CoreDataProperties.swift in Sources */,
 				0A3C086D2A78E0E000E64B14 /* CustomTabBar.swift in Sources */,
 				0A3C086F2A78E13900E64B14 /* RootView.swift in Sources */,
